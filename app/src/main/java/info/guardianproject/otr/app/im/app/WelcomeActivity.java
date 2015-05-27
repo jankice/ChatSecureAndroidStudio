@@ -37,6 +37,10 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import net.hockeyapp.android.UpdateManager;
+
+import java.io.File;
+
 import info.guardianproject.cacheword.CacheWordActivityHandler;
 import info.guardianproject.cacheword.CacheWordService;
 import info.guardianproject.cacheword.ICacheWordSubscriber;
@@ -47,10 +51,9 @@ import info.guardianproject.otr.app.im.engine.ImConnection;
 import info.guardianproject.otr.app.im.provider.Imps;
 import info.guardianproject.otr.app.im.provider.SQLCipherOpenHelper;
 
-import java.io.File;
-
-import net.hockeyapp.android.UpdateManager;
-
+/**
+ * Splash activity
+ */
 public class WelcomeActivity extends ThemeableActivity implements ICacheWordSubscriber  {
 
     private static final String TAG = "WelcomeActivity";

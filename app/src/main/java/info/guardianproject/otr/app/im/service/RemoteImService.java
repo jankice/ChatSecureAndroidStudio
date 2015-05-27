@@ -80,6 +80,9 @@ import android.os.RemoteException;
 import android.util.Log;
 import android.widget.Toast;
 
+/**
+ * Used at every places //TODO: determine exact usage
+ */
 public class RemoteImService extends Service implements OtrEngineListener, ImService, ICacheWordSubscriber {
 
     private static final String PREV_CONNECTIONS_TRAIL_TAG = "prev_connections";
