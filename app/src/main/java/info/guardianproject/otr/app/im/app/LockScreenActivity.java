@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -18,6 +20,8 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -33,8 +37,6 @@ import info.guardianproject.otr.app.im.provider.Imps;
 import info.guardianproject.util.BackgroundBitmapLoaderTask;
 import info.guardianproject.util.Languages;
 
-import java.security.GeneralSecurityException;
-
 public class LockScreenActivity extends ThemeableActivity implements ICacheWordSubscriber {
     private static final String TAG = "LockScreenActivity";
 
@@ -48,6 +50,10 @@ public class LockScreenActivity extends ThemeableActivity implements ICacheWordS
     private View mViewCreatePassphrase;
     private View mViewEnterPassphrase;
     private ImageButton mLanguageButton;
+    private CheckBox mShowPassphrase;  // edited show password
+    private EditText mConfirmPassphrase;
+
+
 
     private CacheWordActivityHandler mCacheWord;
     private String mPasswordError;
@@ -77,6 +83,8 @@ public class LockScreenActivity extends ThemeableActivity implements ICacheWordS
         mEnterPassphrase = (EditText) findViewById(R.id.editEnterPassphrase);
 
         mNewPassphrase = (EditText) findViewById(R.id.editNewPassphrase);
+        mShowPassphrase = (CheckBox) findViewById(R.id.showPassPhrase);
+        mConfirmPassphrase = (EditText) findViewById(R.id.editConfirmPassphrase);
         mConfirmNewPassphrase = (EditText) findViewById(R.id.editConfirmNewPassphrase);
         ViewFlipper vf = (ViewFlipper) findViewById(R.id.viewFlipper1);
         LinearLayout flipView1 = (LinearLayout) findViewById(R.id.flipView1);
@@ -114,6 +122,21 @@ public class LockScreenActivity extends ThemeableActivity implements ICacheWordS
             BackgroundBitmapLoaderTask task = new BackgroundBitmapLoaderTask(this, llRoot);
             task.execute(R.drawable.csbackground);
         }
+// Show OR hide Password ....
+        mShowPassphrase.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(!isChecked)
+                {
+                    mNewPassphrase.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    mConfirmPassphrase.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+                else{
+                    mNewPassphrase.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    mConfirmPassphrase.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+            }
+        });
     }
 
     @Override
