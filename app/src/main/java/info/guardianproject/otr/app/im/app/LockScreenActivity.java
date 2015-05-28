@@ -46,12 +46,12 @@ public class LockScreenActivity extends ThemeableActivity implements ICacheWordS
 
     private EditText mEnterPassphrase;
     private EditText mNewPassphrase;
-    private EditText mConfirmNewPassphrase;
+   // private EditText mConfirmNewPassphrase;
     private View mViewCreatePassphrase;
     private View mViewEnterPassphrase;
     private ImageButton mLanguageButton;
     private CheckBox mShowPassphrase;  // edited show password
-    private EditText mConfirmPassphrase;
+    private EditText mConfirmPassphrase; // edited confirm password
 
 
 
@@ -85,12 +85,12 @@ public class LockScreenActivity extends ThemeableActivity implements ICacheWordS
         mNewPassphrase = (EditText) findViewById(R.id.editNewPassphrase);
         mShowPassphrase = (CheckBox) findViewById(R.id.showPassPhrase);
         mConfirmPassphrase = (EditText) findViewById(R.id.editConfirmPassphrase);
-        mConfirmNewPassphrase = (EditText) findViewById(R.id.editConfirmNewPassphrase);
-        ViewFlipper vf = (ViewFlipper) findViewById(R.id.viewFlipper1);
-        LinearLayout flipView1 = (LinearLayout) findViewById(R.id.flipView1);
-        LinearLayout flipView2 = (LinearLayout) findViewById(R.id.flipView2);
+     /*   mConfirmNewPassphrase = (EditText) findViewById(R.id.editConfirmNewPassphrase);
+        //ViewFlipper vf = (ViewFlipper) findViewById(R.id.viewFlipper1);
+       // LinearLayout flipView1 = (LinearLayout) findViewById(R.id.flipView1);
+       // LinearLayout flipView2 = (LinearLayout) findViewById(R.id.flipView2);
 
-        mSlider = new TwoViewSlider(vf, flipView1, flipView2, mNewPassphrase, mConfirmNewPassphrase);
+       // mSlider = new TwoViewSlider(vf, flipView1, flipView2, mNewPassphrase, mConfirmNewPassphrase);*/
 
         // set up language chooser button
         mLanguageButton = (ImageButton) findViewById(R.id.languageButton);
@@ -165,9 +165,14 @@ public class LockScreenActivity extends ThemeableActivity implements ICacheWordS
         //do nothing!
     }
 
+    /**
+     * Password Validation
+     * @return
+     */
+
     private boolean newEqualsConfirmation() {
-        return mNewPassphrase.getText().toString()
-                .equals(mConfirmNewPassphrase.getText().toString());
+       // return mNewPassphrase.getText().toString().equals(mConfirmNewPassphrase.getText().toString());
+        return mNewPassphrase.getText().toString().equals(mConfirmPassphrase.getText().toString());
     }
 
     private void showValidationError() {
@@ -183,8 +188,11 @@ public class LockScreenActivity extends ThemeableActivity implements ICacheWordS
     }
 
     private void clearNewFields() {
-        mNewPassphrase.getEditableText().clear();
+     /*   mNewPassphrase.getEditableText().clear();
         mConfirmNewPassphrase.getEditableText().clear();
+        */
+        mNewPassphrase.getEditableText().clear();
+        mConfirmPassphrase.getEditableText().clear();
     }
 
     private boolean isPasswordValid() {
@@ -196,7 +204,8 @@ public class LockScreenActivity extends ThemeableActivity implements ICacheWordS
     }
 
     private boolean isConfirmationFieldEmpty() {
-        return mConfirmNewPassphrase.getText().toString().length() == 0;
+       // return mConfirmNewPassphrase.getText().toString().length() == 0;
+        return mConfirmPassphrase.getText().toString().length() ==0;
     }
 
     private void initializeWithPassphrase() {
@@ -232,6 +241,8 @@ public class LockScreenActivity extends ThemeableActivity implements ICacheWordS
         }
     }
 
+
+
     private void initializePassphrase() {
         // Passphrase is not set, so allow the user to create one
 
@@ -257,7 +268,9 @@ public class LockScreenActivity extends ThemeableActivity implements ICacheWordS
             }
         });
 
-        mConfirmNewPassphrase.setOnEditorActionListener(new OnEditorActionListener() {
+
+
+       mConfirmPassphrase.setOnEditorActionListener(new OnEditorActionListener() {
 
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
