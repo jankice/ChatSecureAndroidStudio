@@ -235,6 +235,7 @@ public class WelcomeActivity extends ThemeableActivity implements ICacheWordSubs
         mHandler.registerForBroadcastEvents();
 
         int countAvailable = accountsAvailable();
+        Log.d("WelcomeActivity","accounts available=>"+countAvailable);
 
         if (countAvailable == 1) {
             // If just one account is available for auto-signin, go there immediately after service starts trying
@@ -258,6 +259,7 @@ public class WelcomeActivity extends ThemeableActivity implements ICacheWordSubs
 
         if (intent != null && intent.getAction() != null && (!intent.getAction().equals(Intent.ACTION_MAIN)))
         {
+
             handleIntentAPILaunch(intent);
         }
         else
@@ -273,6 +275,7 @@ public class WelcomeActivity extends ThemeableActivity implements ICacheWordSubs
                     }
                 } while (mProviderCursor.moveToNext());
             }
+
             startActivity(new Intent(getBaseContext(), NewChatActivity.class));
             finish();
         }
@@ -402,6 +405,7 @@ public class WelcomeActivity extends ThemeableActivity implements ICacheWordSubs
 
     @Override
     public void onCacheWordOpened() {
+        Log.d("D/WelcomeActivity","CacheWord Opened and logged");
         if (mDoLock) {
             completeShutdown();
             return;

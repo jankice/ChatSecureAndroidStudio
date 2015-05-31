@@ -173,7 +173,9 @@ android:sharedUserLabel="@string/perm_label"
             <data android:scheme="xmpp" />
             <data android:scheme="im" />
         </intent-filter>
+
     </activity>
+
     <!--
     <activity
         android:name=".app.ActiveChatListView"

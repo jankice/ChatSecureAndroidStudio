@@ -35,6 +35,8 @@ import android.text.Editable;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.text.util.Linkify;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -55,6 +57,9 @@ import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 
+import java.util.HashMap;
+import java.util.Locale;
+
 import info.guardianproject.onionkit.ui.OrbotHelper;
 import info.guardianproject.otr.IOtrChatSession;
 import info.guardianproject.otr.OtrAndroidKeyManagerImpl;
@@ -71,9 +76,6 @@ import info.guardianproject.otr.app.im.provider.Imps.CommonPresenceColumns;
 import info.guardianproject.otr.app.im.service.ImServiceConstants;
 import info.guardianproject.util.LogCleaner;
 import info.guardianproject.util.XmppUriHelper;
-
-import java.util.HashMap;
-import java.util.Locale;
 
 public class AccountActivity extends ActionBarActivity {
 
@@ -107,6 +109,7 @@ public class AccountActivity extends ActionBarActivity {
     EditText mEditPass;
     EditText mEditPassConfirm;
     CheckBox mRememberPass;
+    CheckBox mShowPass;
     CheckBox mUseTor;
     Button mBtnSignIn;
     Button mBtnQrDisplay;
@@ -197,7 +200,7 @@ public class AccountActivity extends ActionBarActivity {
             mPort = 0;
             final boolean regWithTor = i.getBooleanExtra("useTor", false);
 
-            Cursor cursor = openAccountByUsernameAndDomain(cr);
+            Cursor cursor = openAccountByUsernameAndDomain(cr); // Dont know what cursor gives
             boolean exists = cursor.moveToFirst();
             long accountId;
             if (exists) {
@@ -214,6 +217,7 @@ public class AccountActivity extends ActionBarActivity {
                 return;
 
             } else {
+                Log.d("AccountActivity","Create jabber account without the cursor");
                 mProviderId = helper.createAdditionalProvider(helper.getProviderNames().get(0)); //xmpp FIXME
                 accountId = ImApp.insertOrUpdateAccount(cr, mProviderId, mUserName, pass);
                 mAccountUri = ContentUris.withAppendedId(Imps.Account.CONTENT_URI, accountId);
@@ -228,7 +232,7 @@ public class AccountActivity extends ActionBarActivity {
 
         } else if (Intent.ACTION_INSERT.equals(action)) {
 
-
+            // This condition renders the form to add an existing Jabber Account
             setupUIPre();
 
             mOriginalUserAccount = "";
@@ -345,6 +349,7 @@ public class AccountActivity extends ActionBarActivity {
         }
 
         mRememberPass = (CheckBox) findViewById(R.id.rememberPassword);
+        mShowPass = (CheckBox) findViewById(R.id.showPassword);
         mUseTor = (CheckBox) findViewById(R.id.useTor);
 
 
@@ -360,6 +365,22 @@ public class AccountActivity extends ActionBarActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 updateWidgetState();
+            }
+        });
+
+
+        mShowPass.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(!isChecked)
+                {
+                    mEditPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+                }
+                else{
+                    mEditPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                   ;
+                }
             }
         });
 

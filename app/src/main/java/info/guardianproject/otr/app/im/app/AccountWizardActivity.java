@@ -50,14 +50,14 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.viewpagerindicator.PageIndicator;
 
-import info.guardianproject.onionkit.ui.OrbotHelper;
+import java.util.List;
+import java.util.UUID;
+
 import info.guardianproject.otr.OtrAndroidKeyManagerImpl;
 import info.guardianproject.otr.OtrDebugLogger;
 import info.guardianproject.otr.app.im.R;
 import info.guardianproject.otr.app.im.plugin.xmpp.auth.GTalkOAuth2;
 import info.guardianproject.otr.app.im.provider.Imps;
-import java.util.List;
-import java.util.UUID;
 
 public class AccountWizardActivity extends ThemeableActivity {
     private static final String TAG = ImApp.LOG_TAG;
@@ -121,6 +121,8 @@ public class AccountWizardActivity extends ThemeableActivity {
 
         PageIndicator titleIndicator = (PageIndicator) findViewById(R.id.indicator);
         titleIndicator.setViewPager(mPager);
+        // Short circuiting the account selection slider to create an existing jabber account as per our requirement
+        showSetupAccountForm(helper.getProviderNames().get(0),null, null, false,helper.getProviderNames().get(0),false);
     }
 
     AccountAdapter getAdapter() {
@@ -334,7 +336,7 @@ public class AccountWizardActivity extends ThemeableActivity {
 
     public void createBurnerAccount ()
     {
-
+/*
         OrbotHelper oh = new OrbotHelper(this);
         if (!oh.isOrbotInstalled())
         {
@@ -347,7 +349,7 @@ public class AccountWizardActivity extends ThemeableActivity {
             return;
         }
 
-        //need to generate proper IMA url for account setup
+ */       //need to generate proper IMA url for account setup
         String regUser = java.util.UUID.randomUUID().toString().substring(0,10).replace('-','a');
         String regPass =  UUID.randomUUID().toString().substring(0,16);
         String regDomain = "jabber.calyxinstitute.org";
@@ -356,7 +358,7 @@ public class AccountWizardActivity extends ThemeableActivity {
         Intent intent = new Intent(this, AccountActivity.class);
         intent.setAction(Intent.ACTION_INSERT);
         intent.setData(uriAccountData);
-        intent.putExtra("useTor", true);
+        intent.putExtra("useTor", false);
         startActivityForResult(intent,REQUEST_CREATE_ACCOUNT);
 
 

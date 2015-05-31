@@ -68,6 +68,7 @@ public class LockScreenActivity extends ThemeableActivity implements ICacheWordS
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        Intent i = getIntent();
 
         mApp = (ImApp)getApplication();
 
@@ -289,23 +290,23 @@ public class LockScreenActivity extends ThemeableActivity implements ICacheWordS
         mBtnCreate = (Button) findViewById(R.id.btnCreate);
         mBtnCreate.setOnClickListener(new OnClickListener()
         {
+
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 // validate
                 if (!isPasswordValid()) {
                     showValidationError();
                     mSlider.showNewPasswordField();
                 } else if (isConfirmationFieldEmpty() && !isPasswordFieldEmpty()) {
-                    mBtnSkip.setVisibility(View.GONE);
-                    mSlider.showConfirmationField();
-                    mBtnCreate.setText(R.string.lock_screen_confirm_passphrase);
-                }
-                else if (!newEqualsConfirmation()) {
+
+                    Toast.makeText(getApplication().getApplicationContext(), "Confirm Password Field is Empty", Toast.LENGTH_LONG).show();
+             //      mBtnSkip.setVisibility(View.GONE);
+               //    mSlider.showConfirmationField();
+                 //  mBtnCreate.setText(R.string.lock_screen_confirm_passphrase);
+                } else if (!newEqualsConfirmation()) {
                     showInequalityError();
-                }
-               else if (!isConfirmationFieldEmpty() && !isPasswordFieldEmpty())
-               {
+                } else if (!isConfirmationFieldEmpty() && !isPasswordFieldEmpty()) {
+
                     initializeWithPassphrase();
                 }
             }
@@ -319,8 +320,12 @@ public class LockScreenActivity extends ThemeableActivity implements ICacheWordS
             @Override
             public void onClick(View v)
             {
-                if (isPasswordFieldEmpty())
-                    initializeWithPassphrase();
+               if(!isPasswordFieldEmpty())
+
+                 /*   Intent i = new Intent(LockScreenActivity.this, AccountActivity.class);
+                    startActivity(i);*/
+
+                  initializeWithPassphrase();
 
             }
         });
@@ -487,7 +492,7 @@ public class LockScreenActivity extends ThemeableActivity implements ICacheWordS
 
         if (intent != null)
         {
-
+            // it starts Welcome Activity here with the same Intent (Acton_main) that was used to start the application
             getIntent().removeExtra("originalIntent");
             finish();
 //            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
