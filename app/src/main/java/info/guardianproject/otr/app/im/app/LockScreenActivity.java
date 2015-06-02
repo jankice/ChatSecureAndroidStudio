@@ -320,7 +320,7 @@ public class LockScreenActivity extends ThemeableActivity implements ICacheWordS
             @Override
             public void onClick(View v)
             {
-               if(!isPasswordFieldEmpty())
+               if(isPasswordFieldEmpty())
 
                  /*   Intent i = new Intent(LockScreenActivity.this, AccountActivity.class);
                     startActivity(i);*/

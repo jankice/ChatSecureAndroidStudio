@@ -51,7 +51,7 @@ android:sharedUserLabel="@string/perm_label"
 <application
     android:name=".app.ImApp"
     android:allowBackup="false"
-    android:icon="@drawable/ic_launcher"
+    android:icon="@drawable/logo_1"
     android:label="@string/im_label"
     android:theme="@style/AppTheme" >
     <activity android:name=".app.WelcomeActivity" >

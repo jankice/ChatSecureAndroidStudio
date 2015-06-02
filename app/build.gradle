@@ -4,7 +4,7 @@ android {
     compileSdkVersion 22
     buildToolsVersion '19.1.0'
     defaultConfig {
-        applicationId "info.guardianproject.otr.app.im"
+        applicationId 'info.guardianproject.otr.app.im'
         minSdkVersion 9
         targetSdkVersion 21
         versionCode 1411005

@@ -16,44 +16,6 @@
  */
 package info.guardianproject.otr.app.im.app;
 
-import info.guardianproject.iocipher.VirtualFileSystem;
-import info.guardianproject.otr.IOtrChatSession;
-import info.guardianproject.otr.OtrAndroidKeyManagerImpl;
-import info.guardianproject.otr.OtrChatManager;
-import info.guardianproject.otr.app.im.IChatSession;
-import info.guardianproject.otr.app.im.IChatSessionManager;
-import info.guardianproject.otr.app.im.IContactList;
-import info.guardianproject.otr.app.im.IContactListListener;
-import info.guardianproject.otr.app.im.IContactListManager;
-import info.guardianproject.otr.app.im.IImConnection;
-import info.guardianproject.otr.app.im.ISubscriptionListener;
-import info.guardianproject.otr.app.im.R;
-import info.guardianproject.otr.app.im.app.ContactListFilterView.ContactListListener;
-import info.guardianproject.otr.app.im.engine.Contact;
-import info.guardianproject.otr.app.im.engine.ImConnection;
-import info.guardianproject.otr.app.im.engine.ImErrorInfo;
-import info.guardianproject.otr.app.im.plugin.xmpp.XmppAddress;
-import info.guardianproject.otr.app.im.provider.Imps;
-import info.guardianproject.otr.app.im.service.ImServiceConstants;
-import info.guardianproject.otr.app.im.ui.SecureCameraActivity;
-import info.guardianproject.util.LogCleaner;
-import info.guardianproject.util.SystemServices;
-import info.guardianproject.util.SystemServices.FileInfo;
-import info.guardianproject.util.XmppUriHelper;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.UUID;
-
-import net.java.otr4j.OtrPolicy;
-import net.java.otr4j.session.SessionStatus;
-
-import org.ironrabbit.type.CustomTypefaceManager;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -118,6 +80,44 @@ import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import net.java.otr4j.OtrPolicy;
+import net.java.otr4j.session.SessionStatus;
+
+import org.ironrabbit.type.CustomTypefaceManager;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.UUID;
+
+import info.guardianproject.iocipher.VirtualFileSystem;
+import info.guardianproject.otr.IOtrChatSession;
+import info.guardianproject.otr.OtrAndroidKeyManagerImpl;
+import info.guardianproject.otr.OtrChatManager;
+import info.guardianproject.otr.app.im.IChatSession;
+import info.guardianproject.otr.app.im.IChatSessionManager;
+import info.guardianproject.otr.app.im.IContactList;
+import info.guardianproject.otr.app.im.IContactListListener;
+import info.guardianproject.otr.app.im.IContactListManager;
+import info.guardianproject.otr.app.im.IImConnection;
+import info.guardianproject.otr.app.im.ISubscriptionListener;
+import info.guardianproject.otr.app.im.R;
+import info.guardianproject.otr.app.im.app.ContactListFilterView.ContactListListener;
+import info.guardianproject.otr.app.im.engine.Contact;
+import info.guardianproject.otr.app.im.engine.ImConnection;
+import info.guardianproject.otr.app.im.engine.ImErrorInfo;
+import info.guardianproject.otr.app.im.plugin.xmpp.XmppAddress;
+import info.guardianproject.otr.app.im.provider.Imps;
+import info.guardianproject.otr.app.im.service.ImServiceConstants;
+import info.guardianproject.otr.app.im.ui.SecureCameraActivity;
+import info.guardianproject.util.LogCleaner;
+import info.guardianproject.util.SystemServices;
+import info.guardianproject.util.SystemServices.FileInfo;
+import info.guardianproject.util.XmppUriHelper;
 
 public class NewChatActivity extends FragmentActivity implements View.OnCreateContextMenuListener {
 
@@ -994,6 +994,7 @@ public class NewChatActivity extends FragmentActivity implements View.OnCreateCo
                     importKeyStore();
                     return true;
                 }
+
 
                 return false;
 
