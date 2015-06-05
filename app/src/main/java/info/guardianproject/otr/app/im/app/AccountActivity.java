@@ -95,6 +95,7 @@ public class AccountActivity extends ActionBarActivity {
 
     public final static String DEFAULT_SERVER_GOOGLE = "talk.l.google.com";
     public final static String DEFAULT_SERVER_FACEBOOK = "chat.facebook.com";
+    public final static String DEFAULT_SERVER_SHAHMICRO = "im.shahmicro.com";
     public final static String DEFAULT_SERVER_JABBERORG = "hermes2.jabber.org";
     public final static String DEFAULT_SERVER_DUKGO = "dukgo.com";
     public final static String ONION_JABBERCCC = "okj7xc6j2szr2y75.onion";
@@ -112,7 +113,7 @@ public class AccountActivity extends ActionBarActivity {
     CheckBox mShowPass;
     CheckBox mUseTor;
     Button mBtnSignIn;
-    Button mBtnQrDisplay;
+    //Button mBtnQrDisplay;
     AutoCompleteTextView mSpinnerDomains;
 
     Button mBtnAdvanced;
@@ -289,13 +290,13 @@ public class AccountActivity extends ActionBarActivity {
                     pCursor, cr, mProviderId, false /* don't keep updated */, null /* no handler */);
 
             try {
-                mOriginalUserAccount = cursor.getString(ACCOUNT_USERNAME_COLUMN) + "@"
+                mOriginalUserAccount = cursor.getInt(ACCOUNT_USERNAME_COLUMN) + "@"
                                        + settings.getDomain();
                 mEditUserAccount.setText(mOriginalUserAccount);
                 mEditPass.setText(cursor.getString(ACCOUNT_PASSWORD_COLUMN));
                 mRememberPass.setChecked(!cursor.isNull(ACCOUNT_PASSWORD_COLUMN));
                 mUseTor.setChecked(settings.getUseTor());
-                mBtnQrDisplay.setVisibility(View.VISIBLE);
+              //  mBtnQrDisplay.setVisibility(View.VISIBLE);
             } finally {
                 settings.close();
                 cursor.close();
@@ -359,7 +360,7 @@ public class AccountActivity extends ActionBarActivity {
             mBtnSignIn.setText(R.string.btn_create_new_account);
 
         mBtnAdvanced = (Button) findViewById(R.id.btnAdvanced);
-        mBtnQrDisplay = (Button) findViewById(R.id.btnQR);
+      //  mBtnQrDisplay = (Button) findViewById(R.id.btnQR);
 
         mRememberPass.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
@@ -409,17 +410,17 @@ public class AccountActivity extends ActionBarActivity {
         });
 
 
-        mBtnQrDisplay.setOnClickListener(new OnClickListener()
+    /*    mBtnQrDisplay.setOnClickListener(new OnClickListener()
         {
 
             @Override
             public void onClick(View v) {
 
-               showQR();
+              // showQR();
 
             }
 
-        });
+        });*/
 
 
         mBtnSignIn.setOnClickListener(new OnClickListener() {
@@ -1123,7 +1124,7 @@ public class AccountActivity extends ActionBarActivity {
                     settings.close();
                 }
 
-                return null;
+                    return null;
               }
 
             @Override

@@ -123,14 +123,14 @@
 		<string name="check_auto_sign_in">This option automatically signs you in every time you open this application. To disable the option, sign out, then clear the \"Sign me in automatically\" check box.</string>
 		<string name="use_tor">Connect via Tor (Requires Orbot app)</string>
 
-		<string name="account_setup_example_email_address">user@domain</string>
+		<string name="account_setup_example_email_address">ExistingUserId(e.g. 9327749086)</string>
 		<string name="account_setup_new_username">new username</string>
 		<string name="account_setup_service_provider">service provider (dukgo.com, jabber.ccc.de)</string>
 		<string name="account_setup_password">password</string>
 		<string name="account_setup_password_confirm">confirm password</string>
 		<string name="account_setup_advanced_button">Advanced Account Settings</string>
 		<string name="account_select_type">Account Setup</string>
-		<string name="btn_create_new_account">Register Account</string>
+    <string name="btn_create_new_account">Register Account</string>
 		
 		<string name="account_setup_pers_sub">Persistence</string>
 		<string name="account_setup_pers_pw_title">Remember Password</string>
@@ -238,8 +238,8 @@
 		
 		<string name="empty_chat_list">No active chats.</string>
 		
-		<string name="add_contact_title">Add contact</string>
-		<string name="input_contact_label">Username or JabberID of person to add:</string>
+		<string name="add_contact_title">Add Contect</string>
+		<string name="input_contact_label">UserID of person to add:</string>
 		<string name="choose_list_label">Account to add to:</string>
 		<string name="invite_instruction">Type a name to add from Contacts.</string>
 		<string name="invite_label">Send Invite</string>
