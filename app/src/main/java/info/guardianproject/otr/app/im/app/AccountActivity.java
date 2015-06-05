@@ -778,7 +778,13 @@ public class AccountActivity extends ActionBarActivity {
         settings.setAllowPlainAuth(false);
         settings.setPort(DEFAULT_PORT);
 
-        if (domain.equals("gmail.com")) {
+        if(domain.equals("im.shahmicro.com")){
+            settings.setDoDnsSrv(false);
+            settings.setServer(DEFAULT_SERVER_SHAHMICRO);
+            settings.setDomain(domain);
+        }
+
+        else if (domain.equals("gmail.com")) {
             // Google only supports a certain configuration for XMPP:
             // http://code.google.com/apis/talk/open_communications.html
 

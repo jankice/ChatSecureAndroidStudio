@@ -29,6 +29,8 @@
 		<string name="wo_perm_desc">Allows applications to write data to the IM content provider.</string>
 		<string name="perm_label">start IM service</string>
 		<string name="perm_desc">Allows applications to start IM service via intent.</string>
+
+
 		
 		<!-- General: Actions -->
 		<string name="confirm">Confirm</string>
@@ -60,7 +62,7 @@
 		<string name="password_please">Password please…</string>
 		<string name="passphrase">Passphrase</string>
 		<string name="passphrase_again">Passphrase (again)</string>
-		
+		<string name="account_changepassword_oldpassword">Old password</string>
 		<!-- Views: Setup -->
 		<string name="landing_page_title">Select an account</string>
 		<string name="choose_account_title">Select an account</string>
