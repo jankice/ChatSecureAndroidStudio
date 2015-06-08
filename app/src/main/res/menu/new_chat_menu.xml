@@ -209,6 +209,9 @@
         android:icon="@android:drawable/ic_menu_preferences"
          app:showAsAction="never"
          />
+     <item android:id="@+id/menu_chng_password"
+         android:title="@string/menu_chng_password"
+         />
   <!-- 
       <item android:id="@+id/menu_view_accounts"
         android:title="@string/menu_add_account"

@@ -167,7 +167,7 @@
 		
 		<string name="account_wizard_setup_body">Enter your account ID to configure InstaUpdate for your XMPP chat service. It looks like an email address:</string>
 		<string name="account_wizard_account_body">Please enter your account ID (user@hostname):</string>
-		<string name="account_wizard_host_body">Please enter or edit your jabber/xmpp chat server hostname and port number (5222 is default).</string>
+		<string name="account_wizard_host_body">Please enter or edit your ShahMicro chat server hostname and port number (5222 is default).</string>
 		<string name="account_wizard_ready_body">InstaUpdate has been configured, and now it is time to connect to your service, and start chatting safely, securely and privately!</string>
 		
 		<string name="_via_orbot">"Orbot (Tor)"</string>
@@ -343,6 +343,7 @@
 		<!-- Security: OTR: Keyring -->
 		<string name="detected_Otr_keystore_import">We have detected an OTR keystore to import. Would you like to scan the QR password now?</string>
 		<string name="menu_import_keys">Activate KeySync</string>
+        <string name="menu_chng_password">Change Password</string>
 		<string name="successfully_imported_otr_keyring">Successfully imported OTR keyring</string>
 		
 		<!-- Security: OTR: Verification -->
@@ -575,7 +576,7 @@
 		
 		
 		<!-- Other: Provider -->
- 		<string name="provider_full_name_xmpp">Jabber (XMPP)</string>
+ 		<string name="provider_full_name_xmpp"> ShahMicro </string>
  		<string name="provider_full_name_llxmpp">Local Area (Bonjour/ZeroConf)</string>
  		<string name="google_account">Google Account</string>
  		<string name="default_service_provider">dukgo.com</string>
@@ -685,7 +686,7 @@
 			<item>o_O</item>
 		</string-array>
 			<string name="i_have_an_existing_xmpp_account">Existing Account</string>
-			<string name="account_existing_full">Connect to my existing account on a specific Jabber / XMPP server.</string>
+			<string name="account_existing_full">Connect to my existing account on a specific ShahMicro server.</string>
 			
 			<string name="i_want_to_chat_using_my_google_account">Google Account </string>
 			<string name="account_google_full">Chat with other Google users using your existing Google account.</string>

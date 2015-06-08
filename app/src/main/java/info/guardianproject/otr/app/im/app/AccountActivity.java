@@ -55,8 +55,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.zxing.integration.android.IntentIntegrator;
-
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -75,7 +73,6 @@ import info.guardianproject.otr.app.im.provider.Imps.AccountStatusColumns;
 import info.guardianproject.otr.app.im.provider.Imps.CommonPresenceColumns;
 import info.guardianproject.otr.app.im.service.ImServiceConstants;
 import info.guardianproject.util.LogCleaner;
-import info.guardianproject.util.XmppUriHelper;
 
 public class AccountActivity extends ActionBarActivity {
 
@@ -125,7 +122,7 @@ public class AccountActivity extends ActionBarActivity {
     boolean isSignedIn = false;
 
     String mUserName = "";
-    String mDomain = "";
+    String mDomain = "im.shahmicro.com";
     int mPort = 0;
     private String mOriginalUserAccount = "";
 
@@ -778,13 +775,9 @@ public class AccountActivity extends ActionBarActivity {
         settings.setAllowPlainAuth(false);
         settings.setPort(DEFAULT_PORT);
 
-        if(domain.equals("im.shahmicro.com")){
-            settings.setDoDnsSrv(false);
-            settings.setServer(DEFAULT_SERVER_SHAHMICRO);
-            settings.setDomain(domain);
-        }
 
-        else if (domain.equals("gmail.com")) {
+
+        if (domain.equals("gmail.com")) {
             // Google only supports a certain configuration for XMPP:
             // http://code.google.com/apis/talk/open_communications.html
 
@@ -799,6 +792,16 @@ public class AccountActivity extends ActionBarActivity {
             settings.setDoDnsSrv(false);
             settings.setServer(DEFAULT_SERVER_GOOGLE); //set the google connect server
             settings.setDomain(domain);
+        }
+        else if(domain.equals("im.shahmicro.com")){
+            if (settings.getUseTor())
+            {
+                settings.setDoDnsSrv(false);
+                settings.setServer(DEFAULT_SERVER_SHAHMICRO);
+
+            }
+
+            settings.setDomain(DEFAULT_SERVER_SHAHMICRO);
         }
         else if (domain.equals("jabber.org")) {
 
@@ -1167,12 +1170,12 @@ public class AccountActivity extends ActionBarActivity {
         }.execute();
     }
 
-    public void showQR ()
+ /*   public void showQR ()
     {
            String localFingerprint = OtrAndroidKeyManagerImpl.getInstance(this).getLocalFingerprint(mOriginalUserAccount);
            String uri = XmppUriHelper.getUri(mOriginalUserAccount, localFingerprint);
            new IntentIntegrator(this).shareText(uri);
-    }
+    }*/
 
     private void setAccountKeepSignedIn(final boolean rememberPass) {
         ContentValues values = new ContentValues();
