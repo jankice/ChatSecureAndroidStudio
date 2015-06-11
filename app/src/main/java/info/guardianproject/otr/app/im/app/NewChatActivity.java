@@ -861,7 +861,7 @@ public class NewChatActivity extends FragmentActivity implements View.OnCreateCo
         mToolbar.setOnMenuItemClickListener(new OnMenuItemClickListener ()
         {
 
-            @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public boolean onMenuItemClick(MenuItem item) {
 
@@ -984,6 +984,13 @@ public class NewChatActivity extends FragmentActivity implements View.OnCreateCo
 
                     case R.id.menu_logout:
                      //   finish();
+                        try {
+                         startAccountSetup();
+                        } catch (Exception e) {
+                            Toast.makeText(NewChatActivity.this, "Error:" + e.getMessage(), Toast.LENGTH_LONG).show(); // TODO i18n
+                            e.printStackTrace();
+                        }
+
 
                         return true;
 
