@@ -16,6 +16,7 @@
  */
 package info.guardianproject.otr.app.im.app;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -31,6 +32,7 @@ import android.graphics.drawable.Drawable;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -859,6 +861,7 @@ public class NewChatActivity extends FragmentActivity implements View.OnCreateCo
         mToolbar.setOnMenuItemClickListener(new OnMenuItemClickListener ()
         {
 
+            @TargetApi(Build.VERSION_CODES.HONEYCOMB)
             @Override
             public boolean onMenuItemClick(MenuItem item) {
 
@@ -978,6 +981,12 @@ public class NewChatActivity extends FragmentActivity implements View.OnCreateCo
                 case R.id.menu_new_chat:
                     startContactPicker();
                     return true;
+
+                    case R.id.menu_logout:
+                     //   finish();
+
+                        return true;
+
 
                 case R.id.menu_exit:
                     WelcomeActivity.shutdownAndLock(NewChatActivity.this);
@@ -2164,7 +2173,7 @@ public class NewChatActivity extends FragmentActivity implements View.OnCreateCo
 
         final Spinner listAccounts = (Spinner) dialogGroup.findViewById(R.id.choose_list);
         setupAccountSpinner(listAccounts);
-        
+
         new AlertDialog.Builder(this)
             .setTitle(R.string.create_or_join_group_chat)
             .setView(dialogGroup)

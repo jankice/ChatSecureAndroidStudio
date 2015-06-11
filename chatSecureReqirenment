@@ -10,7 +10,8 @@ Remove advance account settings & connect via tor
 
 --After Login to the account (with userid i.e contact no. & Password) next open main chat screen.
 --shoud be able to make brodcast msg group.
---facility to change password.
+--facility to change password for shahmicro user.
+-- unable logout option in chat screen,. after logedout existing user able to logd in again. 
  
 
 when the first installation registration = disabel -->> Login screen

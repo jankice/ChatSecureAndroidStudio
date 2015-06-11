@@ -284,6 +284,7 @@
 		<string name="compose_hint_secure">Send secure message</string>
 		<string name="menu_resend">Resend</string>
 		<string name="menu_end_conversation">End chat</string>
+        <string name="menu_logout">LogOut</string>
 		<string name="menu_clear_chat">Clear chat</string>
 		
 		<string name="menu_insert_smiley">Insert smiley</string>
