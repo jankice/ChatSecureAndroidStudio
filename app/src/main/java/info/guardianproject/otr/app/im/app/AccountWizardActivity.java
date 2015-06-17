@@ -122,7 +122,7 @@ public class AccountWizardActivity extends ThemeableActivity {
         PageIndicator titleIndicator = (PageIndicator) findViewById(R.id.indicator);
         titleIndicator.setViewPager(mPager);
         // Short circuiting the account selection slider to create an existing jabber account as per our
-       // showSetupAccountForm(helper.getProviderNames().get(0), null, null, true, null,false);
+      //  showSetupAccountForm(helper.getProviderNames().get(0), null, null, true, null,false);
       showSetupAccountForm(helper.getProviderNames().get(0),null, null, false,helper.getProviderNames().get(0),false);
     }
 

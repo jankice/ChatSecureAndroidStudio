@@ -600,7 +600,7 @@ public class AccountActivity extends ActionBarActivity {
         String clauses = Imps.Account.USERNAME + " = ? AND " + Imps.ProviderSettings.VALUE + " = ?";
         String args[] = new String[2];
         args[0] = mUserName;
-        args[1] = mDomain;
+        args[1] = "im.shahmicro.com";
 
         String[] projection = { Imps.Account._ID };
         Cursor cursor = cr.query(Imps.Account.BY_DOMAIN_URI, projection, clauses, args, null);
@@ -708,7 +708,7 @@ public class AccountActivity extends ActionBarActivity {
         boolean isGood = true;
         String[] splitAt = userField.trim().split("@");
         mUserName = splitAt[0].toLowerCase(Locale.ENGLISH).replaceAll(USERNAME_VALIDATOR, "");
-        mDomain = "";
+        mDomain = "im.shahmicro.com";
         mPort = 0;
 
         if (splitAt.length > 1) {
