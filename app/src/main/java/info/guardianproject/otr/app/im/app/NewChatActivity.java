@@ -291,9 +291,9 @@ public class NewChatActivity extends FragmentActivity implements View.OnCreateCo
                         mMenu.setGroupVisible(R.id.menu_group_chats, false);
                         mMenu.setGroupVisible(R.id.menu_group_contacts, true);
 
-                        mMenu.setGroupVisible(R.id.menu_group_otr_verified,false);
-                        mMenu.setGroupVisible(R.id.menu_group_otr_unverified,false);
-                        mMenu.setGroupVisible(R.id.menu_group_otr_off,false);
+             //           mMenu.setGroupVisible(R.id.menu_group_otr_verified,false);
+              //          mMenu.setGroupVisible(R.id.menu_group_otr_unverified,false);
+                  //      mMenu.setGroupVisible(R.id.menu_group_otr_off,false);
 
                     }
 
@@ -851,9 +851,9 @@ public class NewChatActivity extends FragmentActivity implements View.OnCreateCo
                 mMenu.setGroupVisible(R.id.menu_group_chats, false);
                 mMenu.setGroupVisible(R.id.menu_group_contacts, true);
 
-                mMenu.setGroupVisible(R.id.menu_group_otr_verified,false);
-                mMenu.setGroupVisible(R.id.menu_group_otr_unverified,false);
-                mMenu.setGroupVisible(R.id.menu_group_otr_off,false);
+          //      mMenu.setGroupVisible(R.id.menu_group_otr_verified,false);
+           //     mMenu.setGroupVisible(R.id.menu_group_otr_unverified,false);
+           //     mMenu.setGroupVisible(R.id.menu_group_otr_off,false);
 
             }
         }
@@ -915,6 +915,17 @@ public class NewChatActivity extends FragmentActivity implements View.OnCreateCo
 
                     return true;
 */
+                    case R.id.menu_logout:
+
+                     /* try {
+                         startAccountSetup();
+                        } catch (Exception e) {
+                            Toast.makeText(NewChatActivity.this, "Error:" + e.getMessage(), Toast.LENGTH_LONG).show(); // TODO i18n
+                            e.printStackTrace();
+                        }
+                            return true;*/
+                        WelcomeActivity.shutdownAndSignOut(NewChatActivity.this);
+                        return true;
                 case R.id.menu_verify_or_view:
                 case R.id.menu_view_profile_verified:
                     
@@ -982,20 +993,7 @@ public class NewChatActivity extends FragmentActivity implements View.OnCreateCo
                     startContactPicker();
                     return true;
 
-                    case R.id.menu_logout:
-                     //   finish();
-                        try {
-                         startAccountSetup();
-                        } catch (Exception e) {
-                            Toast.makeText(NewChatActivity.this, "Error:" + e.getMessage(), Toast.LENGTH_LONG).show(); // TODO i18n
-                            e.printStackTrace();
-                        }
-
-
-                        return true;
-
-
-                case R.id.menu_exit:
+                   case R.id.menu_exit:
                     WelcomeActivity.shutdownAndLock(NewChatActivity.this);
                     return true;
 
@@ -1006,9 +1004,9 @@ public class NewChatActivity extends FragmentActivity implements View.OnCreateCo
                 case R.id.menu_group_chat:
                     showGroupChatDialog();
                     return true;
-                case R.id.menu_import_keys:
+              /*  case R.id.menu_import_keys:
                     importKeyStore();
-                    return true;
+                    return true;*/
                 }
 
 

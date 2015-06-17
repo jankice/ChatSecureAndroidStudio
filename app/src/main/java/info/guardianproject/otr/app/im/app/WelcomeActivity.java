@@ -423,7 +423,8 @@ public class WelcomeActivity extends ThemeableActivity implements ICacheWordSubs
         if (app != null) {
             for (IImConnection conn : app.getActiveConnections()) {
                 try {
-                    conn.logout();
+
+                   conn.logout();
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
@@ -440,6 +441,33 @@ public class WelcomeActivity extends ThemeableActivity implements ICacheWordSubs
         activity.startActivity(intent);
         activity.finish();
     }
+
+
+
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public static void shutdownAndSignOut(Activity activity) {
+       ImApp app = (ImApp) activity.getApplication();
+        if (app != null) {
+            for (IImConnection conn : app.getActiveConnections()) {
+                try {
+                    conn.logout();
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        Intent intent = new Intent(activity, AccountActivity.class);
+
+        intent.putExtra("doLock", true);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        if (Build.VERSION.SDK_INT >= 11)
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        activity.startActivity(intent);
+        activity.finish();
+    }
+
+
 
     private void completeShutdown ()
     {
